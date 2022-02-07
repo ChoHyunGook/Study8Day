@@ -37,13 +37,16 @@ public class Feb07Controller {
                     service.dice(args);
                     break;
                 case "2":
+                    service.rps(scanner,args);
                     break;
                 case "3":
+                    service.getPrime(scanner,args);
                     break;
                 case "4":
                     service.leapYear(scanner,args);
                     break;
                 case "5":
+                    service.numberGolf(scanner,args);
                     break;
                 default:
                     res="정확한 번호를 입력해주세요.";

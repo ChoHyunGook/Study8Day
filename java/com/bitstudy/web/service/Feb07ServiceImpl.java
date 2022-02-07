@@ -18,6 +18,7 @@ public class Feb07ServiceImpl implements Feb07Service{
 
     @Override
     public void dice(String[] args) {
+        
         String s="";
         int i = (int) (Math.random() * 6) +1;
         //원하는 값이 1~6이므로 +1을 해준다 +1을 안할시 0~5가 출력되기때문이다.
@@ -49,7 +50,11 @@ public class Feb07ServiceImpl implements Feb07Service{
             String s = "";
             Random random = new Random();
             computer = random.nextInt(3);
+            //0~2까지 랜덤으로 번호가 입력된다.
             switch (computer - gammer) {
+                case 3:
+                    System.out.println("BYE BYE");
+                    return;
                 case 2:
                     s = "이겼다!";
                     break;
@@ -84,13 +89,32 @@ public class Feb07ServiceImpl implements Feb07Service{
 
     @Override
     public void getPrime(Scanner scanner, String[] args) {
+        int num = 0;
+        int area= 0;
+        System.out.println("구간을 적으세요.");
+        area=scanner.nextInt();
+        String s="";
+        //소수=약수가 1과 자신뿐인수 (i%j[자기자신보다 작아야함]==1이여야 소수)
+        for (int i =2;i<=area;i++){
+            for(int j=2;j<=i;j++){
+                if(i%j==0){
+                    num++;
+                }
+            }if(num==1){
+                System.out.print(i+",\t");
+            }
+            num=0;
+
+        }
+
 
     }
 
     @Override
     public void leapYear(Scanner scanner, String[] args) {
-        //윤년은 해당년도가 4로 나눈 나머지값이 0인것이다. (i%4==0)
-        //그리고(and==>&&) 100으로 나눈 나머지값이 0인것은 윤년에서 제외되며(부정[default값 반대=!](i%100!=0)
+        /*윤년의 조건*/
+        //윤년은 4년마다 돌아오고(i%4==0) 그리고(and==>&&)
+        // 100년으로 나눠 떨어지는건 평년(i%100!=0부정[default값의반대]==>!)
         //또는(or==>||)400으로 나눈값은 윤년(i%400==0)
         System.out.println("연도를 입력해주세요!");
         int i=scanner.nextInt();
